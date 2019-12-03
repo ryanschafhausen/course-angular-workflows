@@ -9,16 +9,12 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class HackerSearchComponent implements OnInit {
   searchTerm: FormControl = new FormControl();
-  @Output() newSearch =
-    new EventEmitter<string>();
+  @Output() newSearch = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit() {
-    this.searchTerm.valueChanges.pipe(
-      debounceTime(500)
-    )
-    .subscribe(term => {
+    this.searchTerm.valueChanges.pipe(debounceTime(500)).subscribe(term => {
       this.newSearch.emit(term);
     });
   }
