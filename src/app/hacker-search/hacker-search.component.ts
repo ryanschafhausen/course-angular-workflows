@@ -14,7 +14,7 @@ export class HackerSearchComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.searchTerm.valueChanges.pipe(debounceTime(500)).subscribe(term => {
+    this.searchTerm.valueChanges.pipe(debounceTime(600)).subscribe(term => {
       this.newSearch.emit(term);
     });
   }
