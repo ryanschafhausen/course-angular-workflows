@@ -3,21 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hacker-dashboard": {
+    "the-grid": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "styleext": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hacker-dashboard",
+            "outputPath": "dist/the-grid",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,10 +27,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/semantic-ui-table/table.min.css",
+              "node_modules/semantic-ui-reset/reset.min.css",
+              "node_modules/semantic-ui-input/input.min.css",
+              "node_modules/semantic-ui-card/card.min.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.min.js",
+              "src/assets/particles.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -48,32 +54,25 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "buildOptimizer": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hacker-dashboard:build"
+            "browserTarget": "the-grid:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hacker-dashboard:build:production"
+              "browserTarget": "the-grid:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hacker-dashboard:build"
+            "browserTarget": "the-grid:build"
           }
         },
         "test": {
@@ -84,7 +83,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -107,21 +106,15 @@
         }
       }
     },
-    "hacker-dashboard-e2e": {
+    "the-grid-e2e": {
       "root": "e2e/",
       "projectType": "application",
-      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hacker-dashboard:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "hacker-dashboard:serve:production"
-            }
+            "devServerTarget": "the-grid:serve"
           }
         },
         "lint": {
@@ -136,5 +129,5 @@
       }
     }
   },
-  "defaultProject": "hacker-dashboard"
+  "defaultProject": "the-grid"
 }
